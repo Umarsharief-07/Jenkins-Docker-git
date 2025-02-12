@@ -1,13 +1,12 @@
-FROM adoptopenjdk/openjdk11:alpine-jr
+FROM adoptopenjdk/openjdk11:alpine
 
 WORKDIR /app
 
 COPY . .
 
-RUN mvn clean package
 
-ARG artifact=target/spring-boot-web.jar
+ARG artifact=target/demo-0.0.1-SNAPSHOT.jar
 
-COPY $(artifact) app.jar
+COPY ${artifact} app.jar
 
-ENTRYPOINT ['java','-jar','app.jar']
+ENTRYPOINT ["java","-jar","app.jar"]
